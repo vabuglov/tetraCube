@@ -1,0 +1,44 @@
+.buttonText
+  min-height: 50px
+  width: 100%
+  border: none
+  border-radius: 5px
+  font-size: 20px
+  cursor: pointer
+  transition: all .3s
+  outline: none
+  @media screen and ( max-width: $weight_tablet )
+    max-height: 45px
+    font-size: 16px
+  &_primary
+    color: $color_neitral_white
+    background-color: $color_primary_main
+  &_secondary
+    color: $color_primary_main
+    background-color: $color_neitral_white
+    border: 1px solid $color_primary_main
+  &_danger
+    color: $color_secondary_sixth
+    background-color: $color_neitral_white
+    border: 1px solid $color_secondary_sixth
+  &.buttonText_enabled.buttonText_danger
+    &:hover
+      border-color: $color_secondary_sixth
+      background-color: $color_secondary_sixth
+      color: $color_neitral_white
+    &:active
+      border-color: $color_secondary_thirth
+      color:  $color_neitral_white
+      background-color: $color_secondary_thirth
+  &.buttonText_enabled.buttonText_secondary
+    &:hover
+      border-color: $color_primary_second
+      color: $color_primary_second
+    &:active
+      border-color: $color_secondary_thirth
+      color:  $color_secondary_thirth
+  &.buttonText_enabled.buttonText_primary
+    &:hover
+      background-color: $color_primary_second
+    &:active
+      background-color: $color_secondary_thirth

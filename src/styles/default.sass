@@ -1,0 +1,48 @@
+*
+	padding: 0
+	margin: 0
+	box-sizing: border-box
+	font-family: Nunito
+	outline: none
+	text-decoration: none
+
+li
+	list-style-type: none
+   
+
+.containerApp
+	display: flex
+	flex-direction: column
+	width: 100%
+	position: relative
+
+.containerContent
+	width: 100%
+	height: calc(100vh - 70px)
+	padding-left: 70px
+	background-color: $color_neitral_background
+	@media screen and ( max-width: 630px )
+		background-color: $color_neitral_white
+	@media screen and ( max-width: 700px )
+		padding: 0
+
+.disabled
+	opacity: .8
+	cursor: not-allowed !important
+	user-select: none
+	& * 
+		user-select: none
+		cursor: not-allowed !important
+
+.none
+	display: none !important
+
+.desktopData
+	@media screen and ( max-width: 630px )
+		display: none !important
+
+.mobileData
+	display: none !important
+	@media screen and ( max-width: 630px )
+		display: flex !important
+

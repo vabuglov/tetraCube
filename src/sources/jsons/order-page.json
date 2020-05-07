@@ -1,0 +1,98 @@
+{
+  "menu": {
+    "home": "Домой",
+    "order": "Заявка",
+    "list": "Список",
+    "calendar": "Календарь",
+    "help": "помощь",
+    "languages": ["русский", "английский", "язык племени Юта"]
+  },
+  "page": {
+    "url": "/order-new",
+    "title": {
+      "title": "Заявка",
+      "step": "Шаг",
+      "save": "автоматическое сохранение ✓"
+    },
+    "firstStep": {
+      "order": {
+        "id": "номер",
+        "selftId": "номер",
+        "cities": [
+          "Санкт...",
+          "Москва",
+          "Уганда"
+        ]
+      },
+      "delivery": {
+        "date": "Дата",
+        "time": "Время",
+        "place": "Место доставки"
+      },
+      "return": {
+        "date": "Дата",
+        "time": "Время",
+        "place": "Место возврата"
+      },
+      "count": {
+        "receivers": 12,
+        "transmitters": 1
+      },
+      "overCount": {
+        "receivers": 2,
+        "transmitters": 1
+      },
+      "buttons": {
+        "next": "Далее"
+      }
+    },
+    "secondStep": {
+      "guides": {
+        "title": "Гид",
+        "tooltip": "",
+        "members": [{
+            "id": 42,
+            "name": "Мария Кузнецова"
+          },
+          {
+            "id": 4,
+            "name": "Игорь Мусюсюкинс"
+          }
+        ]
+      },
+      "managers": {
+        "title": "менеджер",
+        "tooltip": "",
+        "members": [{
+            "id": 42,
+            "name": "Мария Кузнецова"
+          },
+          {
+            "id": 4,
+            "name": "Игорь Мусюсюкинс"
+          }
+        ]
+      },
+      "comment": {
+        "title": "Дополнительно",
+        "tooltip": "",
+        "label": ""
+      },
+      "buttons": {
+        "back": "Назад",
+        "push": "Отправить"
+      },
+      "memberForm": {
+        "titles": {
+          "guide": "Добавить гида",
+          "menager": "Добавить менеджера",
+          "default": "Добавить сотрудника",
+          "custom": "Редактировать "
+        },
+        "name": "имя",
+        "phone": "телефон",
+        "email": "email"
+      }
+    }
+  }
+}

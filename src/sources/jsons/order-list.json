@@ -1,0 +1,45 @@
+{
+  "menu": {
+    "home": "Домой",
+    "order": "Заявка",
+    "list": "Список",
+    "calendar": "Календарь",
+    "help": "помощь",
+    "languages": ["русский", "английский", "язык племени Юта"]
+  },
+  "page": {
+    "url": "/order-new",
+    "title": {
+      "filter": {
+        "items": {
+          "waiting": "Ожидает",
+          "confirmed": "Подтвержден",
+          "inWork": "В работе",
+          "statusPaid": "Не оплачен",
+          "falled": "Есть потери"
+        }
+      },
+      "city": "Город",
+      "number": "Номер"
+    },
+    "table": {
+      "header": {
+        "idAndDate": "№ и дата док-та",
+        "selfId": "Свой номер",
+        "client": "Клиент",
+        "amount": "Кол-во",
+        "price": "Сумма",
+        "statusPaid": "Оплачено",
+        "guide": "Представитель",
+        "deliveryPlace": "Место доставки",
+        "deliveryDate": "Датадоставки",
+        "returnPlace": "Место возврата",
+        "returnDate": "Дата возврата"
+      },
+      "pagination": {
+        "page": "Страница",
+        "rows": "строки"
+      }
+    }
+  }
+}

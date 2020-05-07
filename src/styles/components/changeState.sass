@@ -1,0 +1,26 @@
+.changeState
+  margin-right: 45px
+  cursor: pointer
+  display: flex
+  align-items: center
+  @media screen and ( max-width: 450px )
+    margin-right: 20px
+  &>svg
+    margin-bottom: -1px
+  &>span
+    color: $color_neitral_gray
+    font-size: 14px
+    text-align: center
+    margin-right: 8px
+  &--blue
+    &>span, &>svg
+      color: $color_primary_main
+      fill: $color_primary_main
+  &--green
+    &>span, &>svg
+      color: $color_secondary_seventh
+      fill: $color_secondary_seventh
+  &--hover:hover
+    &>span, &>svg
+      color: $color_secondary_fourth 
+      fill: $color_secondary_fourth
