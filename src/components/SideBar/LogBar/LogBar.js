@@ -1,53 +1,36 @@
 import React, { useState, useContext } from 'react';
 import authenticationService from '../../../services/authentication.service';
 import { Ctx } from '../../../Store';
-import rAPService from '../../../services/requestsApi.service';
-import Button from '@material-ui/core/Button';
 import Input from '../../Input/Input';
+import ButtonText from '../../buttons/ButtonText/ButtonText';
+import commonFunctions from '../../../services/commonFunctions.service';
 
 const LogBar = () => {
 	const [userName, setUserName] = useState();
 	const [password, setPassword] = useState();
-	const [statusLoad, setstatusLoad] = useState(false);
-	const { store, setUser, setAllowedCities, setAllCities } = useContext(Ctx);
-	const auth = new authenticationService({
-		url: store.apiUrl
-	});
+	const { store, setUser } = useContext(Ctx);
+	const commonFuncs = new commonFunctions();
+	const apiUrl = commonFuncs.getApiUrl();
+	const auth = new authenticationService({ apiUrl });
+
 
 	const logIn = async () => {
-		setstatusLoad(true);
-		setTimeout(() => {
-			auth.login(userName, password).then(el => {
-				if (el.status) {
-					const request = new rAPService({ url: store.apiUrl });
-					if (el.data.allowedCities)
-						setAllowedCities(el.data.allowedCities.map(item => {
-							item.value = item.id;
-							item.label = item.name;
-							return item;
-						}));
-					setUser(el.data.user);
-					request.getAllCitiesList().then(el => setAllCities(el.data.cityList));
-				} else {
-					alert('Неверный логин или пароль');
-					setstatusLoad(false);
-				}
-			});
-		}, 2000);
+		auth.login(userName, password).then(el => {
+			if (el.status) {
+				setUser(el.data.user);
+			} else {
+				// alert('Неверный логин или пароль');
+			}
+		});
 	};
 
-	const onButtonClick = () => {
-		setstatusLoad(true);
-		logIn();
-	}
-
 	const handleSignInClick = () => {
-
+		logIn();
 	}
 
 	const onInputPress = (e) => {
 		if (e.key === "Enter")
-			onButtonClick();
+			handleSignInClick();
 	}
 
 	console.log(password);
@@ -55,7 +38,7 @@ const LogBar = () => {
 
 	return (
 		<div className='logBar'>
-			<h1 className='logBar_logo'>Tetra Cube</h1>
+			<h1 className='logBar_logo'>TetraCube</h1>
 			<Input
 				name='username'
 				label='Логин'
@@ -68,18 +51,21 @@ const LogBar = () => {
 			<Input
 				label="Password"
 				type="password"
+				className='mb2'
 				autoComplete="current-password"
 				value={password}
 				onChange={setPassword}
 				onKeyPress={onInputPress}
 				variant="outlined"
 			/>
-			<Button onClick={handleSignInClick} variant="contained" color="primary" disableElevation>
+			<ButtonText className="logBar_button" onClick={handleSignInClick} variant="contained" color="primary" disableElevation loading>
 				Вход
-    	</Button>
+    	</ButtonText>
 			<p className='logBar_desription'>
-				Для получения доступа в личный кабинет свяжитесь с
-				нами по следующим контактам:
+				Вас приветсвует личный кабинет лаборатории: «Промышленные системы потоковой обработки данных»
+			</p>
+			<p className='logBar_desription'>
+				Центра НТИ Санкт-Петербургского политехнического университета Петра Великого
 			</p>
 		</div>
 	);

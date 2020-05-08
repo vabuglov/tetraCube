@@ -1,7 +1,6 @@
 import React, { createContext, useReducer } from "react";
 
 const initialState = {
-  apiUrl: "https://client.crystal-sound.com",
   user: {}
 };
 

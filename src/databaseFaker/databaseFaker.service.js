@@ -1,0 +1,58 @@
+export default class databaseFakerService {
+  getData = (url) => {
+    switch (url) {
+      case "https://db.tetracube.com/rapi/auth":
+        return {
+          data: {
+            user: {
+              active: "1",
+              comment: "",
+              deleted: false,
+              email: "nastena1985@gmail.ru",
+              first_name: "Анастасия",
+              id: "56",
+              last_name: "Джигуашвилевна",
+              phone: "8 800 235 55 35",
+              role: "admin"
+            }
+          },
+          status: true
+        }
+      default:
+        return {
+          status: false
+        }
+    }
+  }
+
+  getRandomTimerTime = () => {
+    return Math.round(Math.random() * 4000);
+  }
+
+  fetchData = async (url, init) => {
+    const accept = init.headers.get("Accept");
+    const contentType = init.headers.get("Content-Type");
+    const authToken = init.headers.get("Authorization");
+    const trueAccept = "application/vnd.tetracube.v1+json";
+    const trueContentType = "application/vnd.tetracube.v1+json";
+    const tureAuthToken = "Basic YWRtaW46YWRtaW4=";
+    const timeAnswer = this.getRandomTimerTime();
+
+    if (accept !== trueAccept)
+      return { status: false, error: "bad accept" }
+
+    if (contentType !== trueContentType)
+      return { status: false, error: "bad contentType" }
+
+    if (authToken !== tureAuthToken)
+      return { status: false, error: "Unauthorized" };
+
+    const promise = new Promise((resolve, reject) => {
+      let wait = setTimeout(() => {
+        resolve(this.getData(url));
+        clearTimeout(wait)
+      }, timeAnswer)
+    })
+    return promise;
+  }
+} 

@@ -2,7 +2,7 @@ import rAPService from "./requestsApi.service";
 
 export default class authenticationService {
   constructor(props) {
-    this.__apiUrl = props.url;
+    this.__apiUrl = props.apiUrl;
   }
 
   login = async (userName, password) => {
@@ -11,13 +11,10 @@ export default class authenticationService {
       url: this.__apiUrl,
       base64: base64Code
     });
-
-    let answer = dbService.getResource("/rapi/auth");
-
+    const answer = dbService.getResource("/rapi/auth");
     await answer.then(el => {
       if (el.status) {
-        if (el.data.redirect)
-          window.location.replace(el.data.redirect);
+        console.log(2222);
         localStorage.setItem("baseCode", base64Code);
       }
     });
@@ -29,16 +26,12 @@ export default class authenticationService {
       url: this.__apiUrl,
       base64: base64Code
     });
-
-    let answer = dbService.getResource("/rapi/auth");
+    const answer = dbService.getResource("/rapi/auth");
     await answer.then(el => {
       if (el.status) {
-        if (el.data.redirect)
-          window.location.replace(el.data.redirect);
         localStorage.setItem("baseCode", base64Code);
       }
     });
-
     return answer;
   };
 
