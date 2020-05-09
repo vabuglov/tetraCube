@@ -1,7 +1,13 @@
 import React, { createContext, useReducer } from "react";
 
 const initialState = {
-  user: {}
+  user: {},
+  menuFields: {
+    home: "Домой",
+    calendar: "Календарь",
+    help: "Помощь",
+    exit: "Выход"
+  }
 };
 
 

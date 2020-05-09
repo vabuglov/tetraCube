@@ -14,10 +14,11 @@ export default class authenticationService {
     const answer = dbService.getResource("/rapi/auth");
     await answer.then(el => {
       if (el.status) {
-        console.log(2222);
         localStorage.setItem("baseCode", base64Code);
       }
     });
+
+
     return answer;
   };
 

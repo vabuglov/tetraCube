@@ -8,7 +8,8 @@ import commonFunctions from '../../../services/commonFunctions.service';
 const LogBar = () => {
 	const [userName, setUserName] = useState();
 	const [password, setPassword] = useState();
-	const { store, setUser } = useContext(Ctx);
+	const [authRequest, setAuthRequest] = useState(false);
+	const { setUser } = useContext(Ctx);
 	const commonFuncs = new commonFunctions();
 	const apiUrl = commonFuncs.getApiUrl();
 	const auth = new authenticationService({ apiUrl });
@@ -19,12 +20,14 @@ const LogBar = () => {
 			if (el.status) {
 				setUser(el.data.user);
 			} else {
-				// alert('Неверный логин или пароль');
+				alert('Неверный логин или пароль');
 			}
+			setAuthRequest(false);
 		});
 	};
 
 	const handleSignInClick = () => {
+		setAuthRequest(true);
 		logIn();
 	}
 
@@ -32,9 +35,6 @@ const LogBar = () => {
 		if (e.key === "Enter")
 			handleSignInClick();
 	}
-
-	console.log(password);
-
 
 	return (
 		<div className='logBar'>
@@ -58,7 +58,7 @@ const LogBar = () => {
 				onKeyPress={onInputPress}
 				variant="outlined"
 			/>
-			<ButtonText className="logBar_button" onClick={handleSignInClick} variant="contained" color="primary" disableElevation loading>
+			<ButtonText className="logBar_button" onClick={handleSignInClick} variant="contained" color="primary" disableElevation loading={authRequest}>
 				Вход
     	</ButtonText>
 			<p className='logBar_desription'>

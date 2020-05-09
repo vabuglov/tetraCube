@@ -31,17 +31,48 @@ export default class rAPService {
         answer = e;
         console.log(e);
       });
-    console.log(answer);
     this.checkBaseCode(answer);
     return answer;
   };
 
-  getOrderList = async (request) => {
-    const data = await this.getResource(
-      `/rapi/orders/list?${request}`
-    );
+  addResource = async (url, data, type) => {
+    let answer = "";
+    console.log(data);
+    // console.log(type);
 
-    return data.data.orderList;
+    const init = {
+      method: type,
+      body: JSON.stringify(data),
+      headers: this.headers
+    };
+    await this.dbFaker.fetchData(this.__apiUrl + url, init)
+      .then(text => {
+        answer = text;
+      })
+      .catch(e => {
+        answer = e;
+        console.log(e);
+      });;
+    this.checkBaseCode(answer);
+    // console.log(answer);
+    // answer.json().then(el => console.log(el));
+    return answer;
   };
+
+  getFreddyCrygerName = async () => {
+    const data = await this.getResource(`/rapi/freddyCrygerName`);
+    return data;
+  }
+
+  addUserData = async (data, typeRequest, typeData) => {
+    let answer = null;
+    const put = "put";
+    const post = "post";
+    if (typeRequest === put)
+      answer = await this.addResource(`/rapi/user/${typeData}/update`, data, put);
+    else if (typeRequest === post)
+      answer = await this.addResource(`/rapi/user/${typeData}/add`, data, post);
+    return answer;
+  }
 
 }

@@ -1,4 +1,4 @@
-.createOrder
+.contentContainer
   position: relative
   padding: 40px 20px
   width: 100%
@@ -8,68 +8,12 @@
   background-color: $color_neitral_background
   @media screen and ( max-width: 630px )
     padding: 30px 0
-  &_multiSelect
-    width: 93%
-    margin-right: 25px
-    cursor: pointer
   @media screen and ( max-height: 800px )
     padding: 20px
     padding-bottom: 0
-  &_leftInput
-    margin-right: 30px
-    @media screen and ( max-width: 940px )
-      margin-right: 20px
-  &_input
-    width: 100%
-  &_button
-    width: 100%
-    display: flex
-    justify-content: center
-    & > button
-      width: 200px
   &>div
     max-width: 1240px
     width: 100%
-  &_info
-    width: 100%
-    display: flex
-    margin-bottom: 50px
-    &-man
-      display: flex
-      margin-right: 80px
-      @media screen and ( max-width: 630px )
-        margin-right: 20px
-      & figure
-        width: 70px
-        height: 70px
-        overflow: hidden
-        margin: 0
-        border-radius: 100%  
-        margin-right: 30px
-        @media screen and ( max-width: 630px )
-          margin-right: 10px
-        & img
-          display: block
-          width: 100%
-      & div
-        & h3
-          font-size: 18px
-          font-weight: 700
-          margin-bottom: 10px
-          @media screen and ( max-width: 630px )
-            margin-bottom: 5px
-        & span
-          font-size: 18px
-    &-status
-      & h3
-        font-size: 18px
-        font-weight: 700
-        margin-bottom: 10px
-        @media screen and ( max-width: 630px )
-          margin-bottom: 5px
-      & div
-        display: flex
-        align-items: center
   &_title
     display: flex
     align-items: flex-end
@@ -83,12 +27,6 @@
       color: $color_neitral_gray
       @media screen and ( max-width: 450px )
         font-size: 10px
-    &--step
-      width: 120px
-      margin-right: 45px
-      margin-bottom: -5px
-      @media screen and ( max-width: 450px )
-        margin-right: 00px
       &>svg
         margin-bottom: -1px
         margin-right: 8px
@@ -174,42 +112,3 @@
             border-radius: 5px
             @media screen and ( max-width: 940px )
               height: 40px
-    &-amount
-      display: flex
-      justify-content: space-between
-      width: 100%
-      margin-bottom: 50px
-      @media screen and ( max-width: 630px )
-        flex-direction: column
-      &-partFirst
-        &_content
-          display: flex
-        width: 42%
-        @media screen and ( max-width: 940px )
-          width: 50%
-        @media screen and ( max-width: 630px )
-          width: 100%
-          margin-bottom: 45px
-      &-PartSecond
-        &_content
-          display: flex
-        width: 55%
-        @media screen and ( max-width: 940px )
-          width: 47%
-        @media screen and ( max-width: 630px )
-          width: 100%
-  &_secondStep
-    &-buttons
-      width: 100%
-      display: flex
-      justify-content: center
-      &-button
-        width: 200px
-        &:first-child
-          margin-right: 30px
-
-
-.createOrder_form-item--content_partSecond>.selectMain
-  @media screen and ( max-width: 630px )
-    padding: 0
-

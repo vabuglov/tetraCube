@@ -7,20 +7,43 @@ export default class databaseFakerService {
             user: {
               active: "1",
               comment: "",
+              username: "marina",
               deleted: false,
               email: "nastena1985@gmail.ru",
               first_name: "Анастасия",
               id: "56",
               last_name: "Джигуашвилевна",
               phone: "8 800 235 55 35",
-              role: "admin"
+              role: ["admin"]
             }
+          },
+          status: true
+        }
+      case "https://db.tetracube.com/rapi/freddyCrygerName":
+        return {
+          data: {
+            freddy_name: "Мистер БИН!!!"
+          },
+          status: true
+        }
+      case "https://db.tetracube.com/rapi/user/name/update":
+        return {
+          data: {
+            user: "Обновленные данные"
+          },
+          status: true
+        }
+      case "https://db.tetracube.com/rapi/user/phone/update":
+        return {
+          data: {
+            user: "Обновленные данные"
           },
           status: true
         }
       default:
         return {
-          status: false
+          status: false,
+          error: "unexpected request"
         }
     }
   }

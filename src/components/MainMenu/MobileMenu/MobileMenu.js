@@ -7,7 +7,7 @@ const MobileMenu = props => {
 
   return (
     <div className="mainMenu--mobile">
-      <div className="mainMenu--mobile_logo">CS</div>
+      <div className="mainMenu--mobile_logo">TC</div>
       <div className="mainMenu--mobile_username">
         {store.user.first_name + " " + store.user.last_name[0] + "."}
       </div>
