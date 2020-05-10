@@ -11,8 +11,8 @@ const UserPage = () => {
   const commonFuncs = new commonFunctions();
   const url = commonFuncs.getApiUrl();
   const request = new rAPService({ url });
-  const [phone, setPhone] = useState();
-  const [name, setName] = useState();
+  const [phone, setPhone] = useState("");
+  const [name, setName] = useState("");
   const [loadData, setLoadData] = useState();
   const [pageInit, setPageInit] = useState(false)
   const { store } = useContext(Ctx);

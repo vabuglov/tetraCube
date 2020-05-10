@@ -6,8 +6,8 @@ import ButtonText from '../../buttons/ButtonText/ButtonText';
 import commonFunctions from '../../../services/commonFunctions.service';
 
 const LogBar = () => {
-	const [userName, setUserName] = useState();
-	const [password, setPassword] = useState();
+	const [userName, setUserName] = useState("");
+	const [password, setPassword] = useState("");
 	const [authRequest, setAuthRequest] = useState(false);
 	const { setUser } = useContext(Ctx);
 	const commonFuncs = new commonFunctions();
