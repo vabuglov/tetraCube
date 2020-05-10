@@ -1,38 +1,46 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import authenticationService from '../../../services/authentication.service';
 import { Ctx } from '../../../Store';
 import Input from '../../Input/Input';
 import ButtonText from '../../buttons/ButtonText/ButtonText';
 import commonFunctions from '../../../services/commonFunctions.service';
 
-const LogBar = (props) => {
+const LogBar = () => {
 	const { setUser } = useContext(Ctx);
 	const commonFuncs = new commonFunctions();
 	const apiUrl = commonFuncs.getApiUrl();
 	const auth = new authenticationService({ apiUrl });
+	const [login, setLogin] = useState("");
+	const [password, setPassword] = useState("");
+	const [authRequest, setAuthRequest] = useState(false);
 
-	const { authRequest, login, password, setAuthRequest, setLogin, setPassword } = { ...props.logBarData };
+	useEffect(() => {
+		return () => {
+		};
+	}, []);
+
+	const handleSignInClick = async () => {
+		setAuthRequest(true);
+		logIn();
+	};
+
+	const onInputPress = async (e) => {
+		if (e.key === "Enter")
+			handleSignInClick();
+	};
 
 	const logIn = async () => {
 		auth.login(login, password).then(el => {
 			if (el.status) {
+				setAuthRequest(false);
 				setUser(el.data.user);
 			} else {
+				setAuthRequest(false);
 				alert('Неверный логин или пароль');
 			}
-			setAuthRequest(false);
 		});
 	};
 
-	const handleSignInClick = () => {
-		setAuthRequest(true);
-		logIn();
-	}
-
-	const onInputPress = (e) => {
-		if (e.key === "Enter")
-			handleSignInClick();
-	}
 
 	return (
 		<div className='logBar'>
