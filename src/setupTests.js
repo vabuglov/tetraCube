@@ -1,5 +1,20 @@
-// jest-dom adds custom jest matchers for asserting on DOM nodes.
-// allows you to do things like:
-// expect(element).toHaveTextContent(/react/i)
-// learn more: https://github.com/testing-library/jest-dom
+import chai from "chai";
+import chaiJestSnapshot from "chai-jest-snapshot";
 import '@testing-library/jest-dom/extend-expect';
+
+chai.use(chaiJestSnapshot);
+
+describe('hooks', () => {
+  // before(() => {
+
+  // });
+
+  // beforeEach(() => {
+  //   chaiJestSnapshot.resetSnapshotRegistry();
+  // });
+
+  beforeEach(() => {
+    chaiJestSnapshot.configureUsingMochaContext(this);
+  });
+
+});

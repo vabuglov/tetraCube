@@ -54,7 +54,8 @@ export default class commonFunctions {
 
   getRoles = () => {
     return {
-      admin: "admin"
+      admin: "admin",
+      user: "user"
     }
   }
 

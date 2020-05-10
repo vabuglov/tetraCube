@@ -1,5 +1,5 @@
 export default class databaseFakerService {
-  getData = (url) => {
+  pushRequest = (url, body = null) => {
     switch (url) {
       case "https://db.tetracube.com/rapi/auth":
         return {
@@ -14,7 +14,7 @@ export default class databaseFakerService {
               id: "56",
               last_name: "Джигуашвилевна",
               phone: "8 800 235 55 35",
-              role: ["admin"]
+              role: ["admin", "user"]
             }
           },
           status: true
@@ -29,14 +29,36 @@ export default class databaseFakerService {
       case "https://db.tetracube.com/rapi/user/name/update":
         return {
           data: {
-            user: "Обновленные данные"
+            user: {
+              active: "1",
+              comment: "",
+              username: "marina",
+              deleted: false,
+              email: "nastena1985@gmail.ru",
+              first_name: body,
+              id: "56",
+              last_name: "Джигуашвилевна",
+              phone: "8 800 235 55 35",
+              role: ["admin", "user"]
+            }
           },
           status: true
         }
       case "https://db.tetracube.com/rapi/user/phone/update":
         return {
           data: {
-            user: "Обновленные данные"
+            user: {
+              active: "1",
+              comment: "",
+              username: "marina",
+              deleted: false,
+              email: "nastena1985@gmail.ru",
+              first_name: "Анастасия",
+              id: "56",
+              last_name: "Джигуашвилевна",
+              phone: body,
+              role: ["admin", "user"]
+            }
           },
           status: true
         }
@@ -61,6 +83,8 @@ export default class databaseFakerService {
     const tureAuthToken = "Basic YWRtaW46YWRtaW4=";
     const timeAnswer = this.getRandomTimerTime();
 
+
+
     if (accept !== trueAccept)
       return { status: false, error: "bad accept" }
 
@@ -72,7 +96,7 @@ export default class databaseFakerService {
 
     const promise = new Promise((resolve, reject) => {
       let wait = setTimeout(() => {
-        resolve(this.getData(url));
+        resolve(this.pushRequest(url, init.body));
         clearTimeout(wait)
       }, timeAnswer)
     })

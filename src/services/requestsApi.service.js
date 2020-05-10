@@ -37,7 +37,7 @@ export default class rAPService {
 
   addResource = async (url, data, type) => {
     let answer = "";
-    console.log(data);
+    // console.log(data);
     // console.log(type);
 
     const init = {
@@ -45,6 +45,8 @@ export default class rAPService {
       body: JSON.stringify(data),
       headers: this.headers
     };
+    // console.log(init.body);
+
     await this.dbFaker.fetchData(this.__apiUrl + url, init)
       .then(text => {
         answer = text;

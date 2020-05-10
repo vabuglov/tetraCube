@@ -14,7 +14,7 @@ const Input = (props) => {
 
   return (
     <div className={inputClassName}>
-      <TextField {...props} onChange={handleChangeValue} />
+      <TextField {...props} value={props.value} onChange={handleChangeValue} />
     </div>
   );
 };

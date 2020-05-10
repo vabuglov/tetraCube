@@ -3,11 +3,12 @@ import { Ctx } from './Store';
 import SideBar from "./components/SideBar/SideBar";
 import MainMenu from "./components/MainMenu/MainMenu";
 import { Switch, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage/HomePage';
 import NotFound from './pages/NotFound/NotFound';
 import LogInImage from './pages/HomePage/LogInImage/LogInImage';
 import authenticationService from './services/authentication.service';
 import commonFunctions from './services/commonFunctions.service';
+import routes from './routes';
+
 
 function App() {
   const { store, setUser } = useContext(Ctx);
@@ -33,24 +34,18 @@ function App() {
   if (!localStorage.getItem("baseCode") || !store.user.username)
     return (
       <div className="App containerApp">
-        <SideBar></SideBar>
+        <SideBar />
         <LogInImage />
       </div>
     );
 
   const allRoles = commonFuncs.getRoles();
   const role = store.user.role;
+
+  console.log({ ...routes["admin"] });
+
   const renderRoutes = (role) => {
-    switch (role) {
-      case "admin":
-        return (
-          <>
-            <Route path="/" component={HomePage} exact />
-          </>
-        );
-      default:
-        return <></>;
-    }
+    return routes[role].map(props => <Route {...props}>{props.component}</Route>)
   }
 
 
@@ -64,6 +59,7 @@ function App() {
       <div className="containerRoutes">
         <Switch>
           {role.indexOf(allRoles.admin) > -1 && renderRoutes(allRoles.admin)}
+          {role.indexOf(allRoles.user) > -1 && renderRoutes(allRoles.user)}
           <Route path="/" component={NotFound} />
         </Switch>
       </div>

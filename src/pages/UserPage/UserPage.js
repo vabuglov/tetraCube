@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import Input from '../../components/Input/Input';
 import commonFunctions from '../../services/commonFunctions.service';
 import PagesContainer from '../PagesContainer/PagesContainer';
@@ -14,12 +14,8 @@ const UserPage = () => {
   const [phone, setPhone] = useState();
   const [name, setName] = useState();
   const [loadData, setLoadData] = useState();
+  const [pageInit, setPageInit] = useState(false)
   const { store } = useContext(Ctx);
-
-  useEffect(() => {
-    changePhone(store.user.phone);
-    setName(store.user.first_name);
-  }, []);
 
   const changePhone = (value) => {
     setPhone(commonFuncs.wrapPhoneByMask(value));
@@ -35,7 +31,7 @@ const UserPage = () => {
   }
 
   const buttonPushPhone = () => {
-    const answer = request.addUserData(name, "put", "phone");
+    const answer = request.addUserData(phone, "put", "phone");
     answer.then(el => {
       if (el.status) {
         alert("Данные обновлены!")
@@ -53,15 +49,21 @@ const UserPage = () => {
     );
   }
 
+  if (!pageInit) {
+    changePhone(store.user.phone);
+    setName(store.user.first_name);
+    setPageInit(true);
+  }
+
   return (
     <PagesContainer title="Управление пользователем" >
       <section className="userPage">
         <div className="userPage_line">
-          <Input id="outlined-basic" value={name} onChange={setName} className="userPage_line-input" label="Имя" variant="outlined" />
+          <Input value={name} onChange={setName} className="userPage_line-input" label="Имя" variant="outlined" />
           <ButtonText onClick={buttonPushName} variant="contained" color="primary" disableElevation > Изменить </ButtonText>
         </div>
         <div className="userPage_line">
-          <Input value={phone} onChange={changePhone} id="outlined-basic" className="userPage_line-input" label="Телефон" variant="outlined" />
+          <Input value={phone} onChange={changePhone} className="userPage_line-input" label="Телефон" variant="outlined" />
           <ButtonText onClick={buttonPushPhone} variant="contained" color="primary" disableElevation > Изменить </ButtonText>
         </div>
         <span>Имя Фредди: {loadData}. Это была загрузка из базы данных с ожиданием</span>

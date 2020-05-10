@@ -19,6 +19,10 @@ const reduser = (store, action) => {
   switch (action.type) {
     case "setUser":
       return { ...store, user: action.payload };
+    default:
+      console.log("request unexpected");
+      break;
+
   }
 };
 
