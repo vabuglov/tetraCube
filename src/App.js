@@ -42,10 +42,8 @@ function App() {
   const allRoles = commonFuncs.getRoles();
   const role = store.user.role;
 
-  console.log({ ...routes["admin"] });
-
   const renderRoutes = (role) => {
-    return routes[role].map(props => <Route {...props}>{props.component}</Route>)
+    return routes[role].map(props => <Route key={commonFuncs.getRandomKey()} {...props} />)
   }
 
 

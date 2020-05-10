@@ -15,6 +15,6 @@ describe('input test', () => {
     expect(button.hasClass(expected)).to.equal(true);
   });
   it('to match snapshot', () => {
-    expect(button).to.matchSnapshot();
+    expect(button.debug()).to.matchSnapshot();
   });
 });
