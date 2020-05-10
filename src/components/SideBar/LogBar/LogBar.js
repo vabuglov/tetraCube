@@ -1,22 +1,20 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import authenticationService from '../../../services/authentication.service';
 import { Ctx } from '../../../Store';
 import Input from '../../Input/Input';
 import ButtonText from '../../buttons/ButtonText/ButtonText';
 import commonFunctions from '../../../services/commonFunctions.service';
 
-const LogBar = () => {
-	const [userName, setUserName] = useState("");
-	const [password, setPassword] = useState("");
-	const [authRequest, setAuthRequest] = useState(false);
+const LogBar = (props) => {
 	const { setUser } = useContext(Ctx);
 	const commonFuncs = new commonFunctions();
 	const apiUrl = commonFuncs.getApiUrl();
 	const auth = new authenticationService({ apiUrl });
 
+	const { authRequest, login, password, setAuthRequest, setLogin, setPassword } = { ...props.logBarData };
 
 	const logIn = async () => {
-		auth.login(userName, password).then(el => {
+		auth.login(login, password).then(el => {
 			if (el.status) {
 				setUser(el.data.user);
 			} else {
@@ -43,8 +41,8 @@ const LogBar = () => {
 				name='username'
 				label='Логин'
 				className='mb2'
-				value={userName}
-				onChange={setUserName}
+				value={login}
+				onChange={setLogin}
 				onKeyPress={onInputPress}
 				variant="outlined"
 			/>
