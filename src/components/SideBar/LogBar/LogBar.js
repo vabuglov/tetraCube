@@ -40,28 +40,30 @@ const LogBar = () => {
 	return (
 		<div className='logBar'>
 			<h1 className='logBar_logo'>TetraCube</h1>
-			<Input
-				name='username'
-				label='Логин'
-				className='mb2'
-				value={login}
-				onChange={setLogin}
-				onKeyPress={onInputPress}
-				variant="outlined"
-			/>
-			<Input
-				label="Password"
-				type="password"
-				className='mb2'
-				autoComplete="current-password"
-				value={password}
-				onChange={setPassword}
-				onKeyPress={onInputPress}
-				variant="outlined"
-			/>
-			<ButtonText className="logBar_button" onClick={handleSignInClick} variant="contained" color="primary" disableElevation loading={authRequest}>
-				Вход
+			<form action="">
+				<Input
+					name='username'
+					label='Логин'
+					className='mb2'
+					value={login}
+					onChange={setLogin}
+					onKeyPress={onInputPress}
+					variant="outlined"
+				/>
+				<Input
+					label="Password"
+					type="password"
+					className='mb2'
+					autoComplete="current-password"
+					value={password}
+					onChange={setPassword}
+					onKeyPress={onInputPress}
+					variant="outlined"
+				/>
+				<ButtonText className="logBar_button" onClick={handleSignInClick} variant="contained" color="primary" disableElevation loading={authRequest}>
+					Вход
     	</ButtonText>
+			</form>
 			<p className='logBar_desription'>
 				Вас приветсвует личный кабинет лаборатории: «Промышленные системы потоковой обработки данных»
 			</p>
