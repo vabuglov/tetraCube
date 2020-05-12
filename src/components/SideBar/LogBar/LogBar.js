@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import authenticationService from '../../../services/authentication.service';
 import { Ctx } from '../../../Store';
 import Input from '../../Input/Input';
@@ -13,11 +13,6 @@ const LogBar = () => {
 	const [login, setLogin] = useState("");
 	const [password, setPassword] = useState("");
 	const [authRequest, setAuthRequest] = useState(false);
-
-	useEffect(() => {
-		return () => {
-		};
-	}, []);
 
 	const handleSignInClick = async () => {
 		setAuthRequest(true);
