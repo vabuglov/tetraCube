@@ -6,11 +6,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Порядок запуска приложения
 
-### npm i #### устанавливает node пакеты
+### npm i - устанавливает node пакеты
 
-### npm start #### запуск приложения
+### npm start - запуск приложения
 
-### npm run test #### запуск тестов
+### npm run test - запуск тестов
 
 ## Данные для входа в личный кабинет:
 
